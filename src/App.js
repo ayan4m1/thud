@@ -1,26 +1,57 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
 
 class App extends Component {
+  state = {
+    cache: false,
+    value: null
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.bustCache = this.bustCache.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData() {
+    const options = (this.state.cache) ? {} : { headers: {
+      'ApiCache-Control': 'no-cache'
+    }};
+
+    return axios.get('http://localhost:9001/api/test', options)
+      .catch(console.error)
+      .then((res) => {
+        if (!res) return;
+        console.dir(res);
+        this.setState({
+          cache: true,
+          value: res.data.value
+        });
+      });
+  }
+
+  bustCache() {
+    this.setState({
+      cache: false
+    }, this.fetchData);
+  }
+
   render() {
-    return (
+    return (this.state.value) ? (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <p>I am {this.state.value}</p>
+          <button className="App-button" onClick={this.bustCache}>
+            Bust Cache!
+          </button>
         </header>
       </div>
-    );
+    ) : (<div>Nope</div>);
   }
 }
 
