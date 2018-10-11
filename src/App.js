@@ -4,7 +4,7 @@ import './App.css';
 
 class App extends Component {
   state = {
-    cache: false,
+    cache: true,
     value: null
   };
 
@@ -20,7 +20,10 @@ class App extends Component {
 
   fetchData() {
     const options = (this.state.cache) ? {} : { headers: {
-      'ApiCache-Control': 'no-cache'
+      'ApiCache-Control': 'no-cache',
+      'Cache-Control': 'no-cache',
+      'Expires': 0,
+      'Pragma': 'no-cache'
     }};
 
     return axios.get('http://localhost:9001/api/test', options)
