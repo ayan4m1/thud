@@ -1,0 +1,28 @@
+{
+  "name": "generator-yeoman-issue",
+  "version": "0.1.0",
+  "description": "Demonstrates issue with Babel and Yeoman",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx babel src/** -d generators/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ayan4m1/thud.git"
+  },
+  "author": "ayan4m1 <andrew@bulletlogic.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ayan4m1/thud/issues"
+  },
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "homepage": "https://github.com/ayan4m1/thud#readme",
+  "dependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "yeoman-generator": "^3.1.1"
+  }
+}
