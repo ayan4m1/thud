@@ -1,0 +1,23 @@
+{
+  "name": "vscode-jest-issue",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ayan4m1/thud.git"
+  },
+  "author": "ayan4m1 <andrew@bulletlogic.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/ayan4m1/thud#readme",
+  "dependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "jest": "^23.6.0"
+  }
+}
